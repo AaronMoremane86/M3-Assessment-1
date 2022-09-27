@@ -1,0 +1,58 @@
+import React, { Component } from 'react';
+import { StyleSheet, Platform, TouchableOpacity, Image, View, Text, Alert
+} from 'react-native';
+export default class Myapp extends Component<{}>
+{
+constructor(){ super(); this.state={ isVisible : true,
+}
+}
+Hide_Splash_Screen=()=>{
+this.setState({ isVisible : false
+});
+}
+componentDidMount(){ var that = this;
+setTimeout(function(){ that.Hide_Splash_Screen();
+}, 5000);
+}
+render()
+{
+let Splash_Screen = (
+<View style={styles.SplashScreen_RootView}>
+<View style={styles.SplashScreen_ChildView}>
+<Image source={https://th.bing.com/th/id/R.5b777419d45b143b3e902b586ce303b3?rik=WUH9j0rAk%2f8pFw&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_506201.png&ehk=GIi2msmG9GdeHZc1bhFCz3ADhKs0s3VQa7x2xRcVnh4%3d&risl=&pid=ImgRaw&r=0'}}
+style={{width:'100%', height: '100%', resizeMode:
+'contain'}} />
+</View>
+</View> )
+return(
+<View style = { styles.MainContainer }>
+<Text style={{textAlign: 'center',width: '100%'
+,backgroundColor: '#36fffc'}}> The screen came earlier shows a Splash Screen</Text>
+{
+(this.state.isVisible === true) ? Splash_Screen : null
+}
+</View>
+);
+}
+}
+const styles = StyleSheet.create(
+{
+MainContainer:
+{
+flex: 1,
+justifyContent: 'center', alignItems: 'center',
+paddingTop: ( Platform.OS === 'android' ) ? 10 : 0
+},
+SplashScreen_RootView:
+{
+justifyContent: 'center', flex:1,
+margin: 20,
+position: 'absolute', width: '100%',
+height: '100%',
+},
+SplashScreen_ChildView:
+{
+ustifyContent: 'center', alignItems: 'center', backgroundColor: '#c2ff29',
+flex:1,
+},
+});
